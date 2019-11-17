@@ -20,5 +20,5 @@ try{
     $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 }catch(Exception $e){
     echo $e->getMessage();
-    die("<br>Db Error </br>");
+    die("<br>Connection Error</br>");
 }
