@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 17, 2019 at 11:46 AM
+-- Generation Time: Nov 22, 2019 at 09:23 AM
 -- Server version: 5.7.26-log
 -- PHP Version: 7.2.18
 
@@ -30,13 +30,14 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `emp_record`;
 CREATE TABLE IF NOT EXISTS `emp_record` (
-  `id` int(11) DEFAULT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `ename` varchar(50) COLLATE utf8_bin DEFAULT NULL,
   `ssn` varchar(50) COLLATE utf8_bin DEFAULT NULL,
   `dept` varchar(50) COLLATE utf8_bin DEFAULT NULL,
   `salary` int(11) DEFAULT NULL,
-  `homeaddress` varchar(50) COLLATE utf8_bin DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `homeaddress` varchar(50) COLLATE utf8_bin DEFAULT NULL,
+  KEY `id` (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=951 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `emp_record`
