@@ -1,18 +1,25 @@
 <?php
 require_once "db.php";
 $sql = "SELECT * FROM `emp_record`";
+$stmt = $connection->prepare($sql);
 if(isset($_GET["search"])){
     $ename = "%".trim($_GET["ename"])."%";
     $salary = trim($_GET["salary"]);
-    $ename = $connection->quote($ename);
-    $salary = $connection->quote($salary);
-    $sql = "SELECT * FROM `emp_record` where `ename` like $ename and `salary` >= $salary";
-    echo $sql;
+    //$ename = $connection->quote($ename);
+    //$salary = $connection->quote($salary);
+    $sql = "SELECT * FROM `emp_record` where `ename` like :employee_name and `salary` >= :employee_salary";
+    $stmt = $connection->prepare($sql);
+    $stmt->bindParam(":employee_name",$ename,PDO::PARAM_STR);
+    $stmt->bindParam(":employee_salary",$salary,PDO::PARAM_INT);
 
 }
 try{
-    $Execute = $connection->query($sql);
-    $numberofrows = $Execute->rowCount();
+
+
+    $stmt->execute();
+    $Execute = $stmt->fetchAll();
+    //var_dump($Execute);
+    $numberofrows = count($Execute);
 
 }catch(Exception $e){
     echo $e->getMessage();
