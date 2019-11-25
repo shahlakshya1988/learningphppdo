@@ -17,6 +17,7 @@ try{
 
 
     $stmt->execute();
+    var_dump($stmt->errorInfo());
     $Execute = $stmt->fetchAll();
     //var_dump($Execute);
     $numberofrows = count($Execute);
